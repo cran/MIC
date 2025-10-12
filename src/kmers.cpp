@@ -76,6 +76,9 @@ bool is_valid_dna_string(T dna){
 }
 //' Reverse complement of DNA string
 //'
+//' @description
+//' `r lifecycle::badge("deprecated")`
+//'
 //' @param dna DNA string
 //' @return reverse complement of DNA string
 //' @export
@@ -221,6 +224,9 @@ std::map<unsigned long long int, unsigned long long int> convert_kmer_string_to_
 
 //' Generates genome kmers
 //'
+//' @description
+//' `r lifecycle::badge("deprecated")`
+//'
 //' @param x genome in string format
 //' @param k kmer length
 //' @param simplify returns a numeric vector of kmer counts,
@@ -314,6 +320,7 @@ List kmers(const CharacterVector& x,
 //' @param overwrite overwrite existing file
 //' @return boolean indicating success
 //' @description
+//' `r lifecycle::badge("deprecated")`
 //' This function converts a single genome to a libsvm file containing kmer
 //' counts. The libsvm format will be as follows:
 //'
@@ -410,6 +417,10 @@ std::vector<std::string> make_unsqueezed_mers(int k) {
 }
 
 //' Generates all permutations of squeezed kmers
+//'
+//' @description
+//' `r lifecycle::badge("deprecated")`
+//'
 //' @param k kmer length
 //' @return vector of squeezed kmers
 //' @export
@@ -424,6 +435,10 @@ StringVector squeezed_mers(int k = 3) {
 }
 
 //' Generates all permutations of unsqueezed kmers
+//'
+//' @description
+//' `r lifecycle::badge("deprecated")`
+//'
 //' @param k kmer length
 //' @return vector of unsqueezed kmers
 //' @export
@@ -438,6 +453,10 @@ StringVector unsqueezed_mers(int k = 3) {
 }
 
 //' Get str conversion of squeezed kmer using index
+//'
+//' @description
+//' `r lifecycle::badge("deprecated")`
+//'
 //' @param x integer vector of kmer indices
 //' @param k kmer length
 //' @param starting_index starting index (libsvm is usually indexed starting at 1)
@@ -463,6 +482,10 @@ StringVector squeezed_index_to_str(IntegerVector x,
 }
 
 //' Get str conversion of unsqueezed kmer using index
+//'
+//' @description
+//' `r lifecycle::badge("deprecated")`
+//'
 //' @param x integer vector of kmer indices
 //' @param k kmer length
 //' @param starting_index starting index (libsvm is usually indexed starting at 1)

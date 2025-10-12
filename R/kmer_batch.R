@@ -70,6 +70,12 @@ genomes_to_kmer_libsvm <- function(source_dir,
                                    canonical = TRUE,
                                    squeeze = FALSE,
                                    ext = ".fna") {
+  lifecycle::deprecate_warn(
+    when = "1.2.0",
+    what = "genomes_to_kmer_libsvm()",
+    with = "faLearn::genomes_to_kmer_libsvm()",
+    details = "This function has been moved to the faLearn package."
+  )
   if (!dir.exists(target_dir)) {
     dir.create(target_dir, recursive = TRUE)
   }
@@ -89,4 +95,88 @@ genomes_to_kmer_libsvm <- function(source_dir,
     p(glue::glue("Completed: {basename(x)}"))
   }, future.seed = TRUE)
   return(TRUE)
+}
+
+#' @rdname reverse_complement
+#' @export
+reverse_complement <- function(dna) {
+  lifecycle::deprecate_warn(
+    when = "1.2.0",
+    what = "reverse_complement()",
+    with = "faLearn::reverse_complement()",
+    details = "This function has been moved to the faLearn package."
+  )
+  .Call(`_MIC_reverse_complement`, dna)
+}
+
+#' @rdname kmers
+#' @export
+kmers <- function(x, k = 3L, simplify = FALSE, canonical = TRUE, squeeze = FALSE, anchor = TRUE, clean_up = TRUE, key_as_int = FALSE, starting_index = 1L) {
+  lifecycle::deprecate_warn(
+    when = "1.2.0",
+    what = "kmers()",
+    with = "faLearn::kmers()",
+    details = "This function has been moved to the faLearn package."
+  )
+  .Call(`_MIC_kmers`, x, k, simplify, canonical, squeeze, anchor, clean_up, key_as_int, starting_index)
+}
+
+#' @rdname genome_to_libsvm
+#' @export
+genome_to_libsvm <- function(x, target_path, label = "0", k = 3L, canonical = TRUE, squeeze = FALSE, overwrite = FALSE) {
+  lifecycle::deprecate_warn(
+    when = "1.2.0",
+    what = "genome_to_libsvm()",
+    with = "faLearn::genome_to_libsvm()",
+    details = "This function has been moved to the faLearn package."
+  )
+  .Call(`_MIC_genome_to_libsvm`, x, target_path, label, k, canonical, squeeze, overwrite)
+}
+
+#' @rdname squeezed_mers
+#' @export
+squeezed_mers <- function(k = 3L) {
+  lifecycle::deprecate_warn(
+    when = "1.2.0",
+    what = "squeezed_mers()",
+    with = "faLearn::squeezed_mers()",
+    details = "This function has been moved to the faLearn package."
+  )
+  .Call(`_MIC_squeezed_mers`, k)
+}
+
+#' @rdname unsqueezed_mers
+#' @export
+unsqueezed_mers <- function(k = 3L) {
+  lifecycle::deprecate_warn(
+    when = "1.2.0",
+    what = "unsqueezed_mers()",
+    with = "faLearn::unsqueezed_mers()",
+    details = "This function has been moved to the faLearn package."
+  )
+  .Call(`_MIC_unsqueezed_mers`, k)
+}
+
+#' @rdname squeezed_index_to_str
+#' @export
+squeezed_index_to_str <- function(x, k, starting_index = 1L) {
+  lifecycle::deprecate_warn(
+    when = "1.2.0",
+    what = "squeezed_index_to_str()",
+    with = "faLearn::squeezed_index_to_str()",
+    details = "This function has been moved to the faLearn package."
+  )
+  .Call(`_MIC_squeezed_index_to_str`, x, k, starting_index)
+}
+
+#' @rdname unsqueezed_index_to_str
+#' @export
+unsqueezed_index_to_str <- function(x, k, starting_index = 1L) {
+  lifecycle::deprecate_warn(
+    when = "1.2.0",
+    what = "unsqueezed_index_to_str()",
+    with = "faLearn::unsqueezed_index_to_str()",
+    details = "This function has been moved to the faLearn package."
+  )
+  .Call(`_MIC_unsqueezed_index_to_str`, x, k, starting_index)
 }

@@ -3,6 +3,9 @@
 
 #' Reverse complement of DNA string
 #'
+#' @description
+#' `r lifecycle::badge("deprecated")`
+#'
 #' @param dna DNA string
 #' @return reverse complement of DNA string
 #' @export
@@ -13,6 +16,9 @@ reverse_complement <- function(dna) {
 }
 
 #' Generates genome kmers
+#'
+#' @description
+#' `r lifecycle::badge("deprecated")`
 #'
 #' @param x genome in string format
 #' @param k kmer length
@@ -53,6 +59,7 @@ kmers <- function(x, k = 3L, simplify = FALSE, canonical = TRUE, squeeze = FALSE
 #' @param overwrite overwrite existing file
 #' @return boolean indicating success
 #' @description
+#' `r lifecycle::badge("deprecated")`
 #' This function converts a single genome to a libsvm file containing kmer
 #' counts. The libsvm format will be as follows:
 #'
@@ -79,6 +86,10 @@ genome_to_libsvm <- function(x, target_path, label = as.character( c("0")), k = 
 }
 
 #' Generates all permutations of squeezed kmers
+#'
+#' @description
+#' `r lifecycle::badge("deprecated")`
+#'
 #' @param k kmer length
 #' @return vector of squeezed kmers
 #' @export
@@ -89,6 +100,10 @@ squeezed_mers <- function(k = 3L) {
 }
 
 #' Generates all permutations of unsqueezed kmers
+#'
+#' @description
+#' `r lifecycle::badge("deprecated")`
+#'
 #' @param k kmer length
 #' @return vector of unsqueezed kmers
 #' @export
@@ -99,6 +114,10 @@ unsqueezed_mers <- function(k = 3L) {
 }
 
 #' Get str conversion of squeezed kmer using index
+#'
+#' @description
+#' `r lifecycle::badge("deprecated")`
+#'
 #' @param x integer vector of kmer indices
 #' @param k kmer length
 #' @param starting_index starting index (libsvm is usually indexed starting at 1)
@@ -111,6 +130,10 @@ squeezed_index_to_str <- function(x, k, starting_index = 1L) {
 }
 
 #' Get str conversion of unsqueezed kmer using index
+#'
+#' @description
+#' `r lifecycle::badge("deprecated")`
+#'
 #' @param x integer vector of kmer indices
 #' @param k kmer length
 #' @param starting_index starting index (libsvm is usually indexed starting at 1)

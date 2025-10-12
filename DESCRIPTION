@@ -1,6 +1,6 @@
 Package: MIC
 Title: Analysis of Antimicrobial Minimum Inhibitory Concentration Data
-Version: 1.1.0
+Version: 1.2.0
 Authors@R: 
     person("Alessandro", "Gerada", , "alessandro.gerada@liverpool.ac.uk", role = c("aut", "cre", "cph"),
            comment = c(ORCID = "0000-0002-6743-4271"))
@@ -12,11 +12,11 @@ Description: Analyse, plot, and tabulate antimicrobial minimum inhibitory concen
     <doi:10.1093/nar/gkt1099> database or locally.
 License: GPL (>= 3)
 Encoding: UTF-8
-RoxygenNote: 7.3.2
+RoxygenNote: 7.3.3
 biocViews:
 Imports: AMR, glue, readr, dplyr, Rcpp, data.table, Biostrings,
         stringr, rlang, tidyr, future.apply, progressr, lemon, ggplot2,
-        forcats, purrr, tibble
+        forcats, purrr, tibble, curl
 Depends: R (>= 4.1.0)
 LazyData: true
 LinkingTo: Rcpp
@@ -26,9 +26,9 @@ Config/testthat/edition: 3
 URL: https://github.com/agerada/MIC
 BugReports: https://github.com/agerada/MIC/issues
 NeedsCompilation: yes
-Packaged: 2025-06-04 16:32:56 UTC; agerada
+Packaged: 2025-10-12 13:16:44 UTC; agerada
 Author: Alessandro Gerada [aut, cre, cph] (ORCID:
     <https://orcid.org/0000-0002-6743-4271>)
 Maintainer: Alessandro Gerada <alessandro.gerada@liverpool.ac.uk>
 Repository: CRAN
-Date/Publication: 2025-06-05 04:20:06 UTC
+Date/Publication: 2025-10-12 16:40:14 UTC

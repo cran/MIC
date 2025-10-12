@@ -1,3 +1,21 @@
+# MIC 1.2.0
+
+* Functions that download data from PATRIC/BV-BRC have now been updated to
+support changes in BV-BRC ftp.
+
+* As of this version the genomic functions of the package have been
+deprecated, so that future versions of `MIC` can focus on MIC analysis.
+Any removed functions will be ported to a new package (called `faLearn`,
+see: https://github.com/agerada/faLearn) that focuses on machine learning with
+genomic data. The only change for users will be to install and load `faLearn`.
+
+* Functionality added to handle <= and => in MIC values, distinguishing them from
+< and >. In general, inhibitory MIC assays report <= and >. The `leq` and `geq`
+arguments for `force_mic` can be used to enforce these. The `essential_agreement`
+and `compare_mic` functions now have `tolerate_leq` and `tolerate_geq` arguments.
+When all settings are kept at default values, the functions assume typical censoring,
+i.e., <= and >.
+
 # MIC 1.1.0
 
 *  revamp of the `essential_agreement` function to allow a more robust, flexible,

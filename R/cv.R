@@ -79,6 +79,12 @@ xgb.cv.lowmem <- function(params = list(),
                           maximize = NULL,
                           save_models = FALSE,
                           ...) {
+  lifecycle::deprecate_warn(
+    when = "1.2.0",
+    what = "xgb.cv.lowmem()",
+    with = "faLearn::xgb.cv.lowmem()",
+    details = "This function has been moved to the faLearn package."
+  )
   output <- list()
 
   if (!inherits(data, "xgb.DMatrix")) {

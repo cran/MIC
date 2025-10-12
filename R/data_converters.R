@@ -1,4 +1,10 @@
 strip_filename <- function(paths) {
+  lifecycle::deprecate_warn(
+    when = "1.2.0",
+    what = "strip_filename()",
+    with = "faLearn::strip_filename()",
+    details = "This function has been moved to the faLearn package."
+  )
   tools::file_path_sans_ext(basename(paths))
 }
 
@@ -48,6 +54,12 @@ train_test_filesystem <- function(path_to_files,
                                   test_folder = "test",
                                   shuffle = TRUE,
                                   overwrite = FALSE) {
+  lifecycle::deprecate_warn(
+    when = "1.2.0",
+    what = "train_test_filesystem()",
+    with = "faLearn::train_test_filesystem()",
+    details = "This function has been moved to the faLearn package."
+  )
   file_ext <- gsub("^\\.", "", file_ext)
   libsvm_filepaths <- list.files(path_to_files,
                                  pattern = paste0("*.", file_ext),
@@ -173,6 +185,12 @@ combined_file_system <- function(path_to_folders,
                                  train_folder = "train",
                                  test_folder = "test",
                                  overwrite = FALSE) {
+  lifecycle::deprecate_warn(
+    when = "1.2.0",
+    what = "combined_file_system()",
+    with = "faLearn::combined_file_system()",
+    details = "This function has been moved to the faLearn package."
+  )
   file_ext <- gsub("^\\.", "", file_ext)
   train_files <- list.files(file.path(path_to_folders, train_folder),
                             pattern = paste0("*.", file_ext),
@@ -263,6 +281,12 @@ move_files <- function(source_dir,
                        move_which,
                        ext = ".txt",
                        copy = FALSE) {
+  lifecycle::deprecate_warn(
+    when = "1.2.0",
+    what = "move_files()",
+    with = "faLearn::move_files()",
+    details = "This function has been moved to the faLearn package."
+  )
   if (!dir.exists(target_dir)) {
     dir.create(target_dir, recursive = TRUE)
   }
@@ -299,6 +323,12 @@ move_files <- function(source_dir,
 #'
 #' @return character vector of paths without duplicate slashes
 replace_multiple_slashes <- function(path) {
+  lifecycle::deprecate_warn(
+    when = "1.2.0",
+    what = "replace_multiple_slashes()",
+    with = "faLearn::replace_multiple_slashes()",
+    details = "This function has been moved to the faLearn package."
+  )
   url_pattern <- "^(https?://)"
 
   cleaned_text <- gsub("([^:/])(/{2,})", "\\1/", path)
@@ -383,6 +413,12 @@ split_and_combine_files <- function(path_to_files,
                                     names_backup = NULL,
                                     shuffle = TRUE,
                                     overwrite = FALSE) {
+  lifecycle::deprecate_warn(
+    when = "1.2.0",
+    what = "split_and_combine_files()",
+    with = "faLearn::split_and_combine_files()",
+    details = "This function has been moved to the faLearn package."
+  )
   file_ext <- gsub("^\\.", "", file_ext)
 
   train_target_path <- ifelse(is.null(train_target_path),
@@ -475,6 +511,12 @@ No changes made. Use overwrite to force changes.")
 }
 
 is_test_train_combined <- function(train_path, test_path, names_path) {
+  lifecycle::deprecate_warn(
+    when = "1.2.0",
+    what = "is_test_train_combined()",
+    with = "faLearn::is_test_train_combined()",
+    details = "This function has been moved to the faLearn package."
+  )
   if (all(file.exists(c(train_path, test_path, names_path)))) {
     tryCatch({
       names_data <- readr::read_csv(names_path,

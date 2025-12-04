@@ -8,13 +8,13 @@
 [![R-CMD-check](https://github.com/agerada/MIC/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/agerada/MIC/actions/workflows/R-CMD-check.yaml)
 <!-- badges: end -->
 
-## Upcoming changes
+## Important updates
 
-From version \>= 1.2.0 the MIC package is being refocused to provide
+As of version 2.0.0 the MIC package has being refocused to provide
 MIC-specific analysis and validation utilities. Genomics-related
 functions (PATRIC download helpers, genome -\> $k$-mer conversion,
-$k$-mer utilities, and similar) are now depracated and have been ported
-to a new package, [`faLearn`](https://github.com/agerada/faLearn).
+$k$-mer utilities, and similar) have been ported to a new package,
+[`faLearn`](https://github.com/agerada/faLearn).
 
 To continue using these functions, simply install and load the `faLearn`
 package alongside `MIC`:
@@ -188,9 +188,6 @@ The plot can also be faceted by antimicrobial:
 
 ``` r
 plot(val, facet_wrap_ncol = 1)
-#> Warning in lemon::facet_rep_wrap(~.data[["ab"]], nrow = facet_wrap_nrow, :
-#> `facet_rep_wrap` and `facet_rep_lab` have been soft-deprecated. A replacement
-#> can be found in ggh4x::facet_wrap2.
 ```
 
 <img src="man/figures/README-unnamed-chunk-8-1.png" width="100%" />

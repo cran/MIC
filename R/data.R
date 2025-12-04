@@ -31,7 +31,7 @@
 #'  \item{`(T)ECOFF`}{see EUCAST documentation below}
 #'  \item{`Confidence interval`}{see EUCAST documentation below}
 #' }
-#' @source EUCAST \url{https://www.eucast.org/mic_and_zone_distributions_and_ecoffs}
+#' @source EUCAST \url{https://www.eucast.org/bacteria/mic-and-zone-distributions-ecoffs/}
 #'
 #' These data have (or this document, presentation or video has) been produced
 #' in part under ECDC service contracts and made available by EUCAST at no cost

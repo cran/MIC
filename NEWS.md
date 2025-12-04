@@ -1,3 +1,12 @@
+# MIC 2.0.0
+
+* This is a major release that includes several breaking changes. The package
+has been refocused to on MIC analysis and validation, and all genomic
+functions have been removed. These have been ported to
+https://github.com/agerada/faLearn. To maintain previous functionality,
+please install and load the `faLearn` package alongside `MIC` in your scripts.
+As such the package now has less dependencies, and no longer requires compilation.
+
 # MIC 1.2.0
 
 * Functions that download data from PATRIC/BV-BRC have now been updated to

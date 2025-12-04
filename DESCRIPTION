@@ -1,34 +1,28 @@
 Package: MIC
 Title: Analysis of Antimicrobial Minimum Inhibitory Concentration Data
-Version: 1.2.0
+Version: 2.0.0
 Authors@R: 
     person("Alessandro", "Gerada", , "alessandro.gerada@liverpool.ac.uk", role = c("aut", "cre", "cph"),
            comment = c(ORCID = "0000-0002-6743-4271"))
 Description: Analyse, plot, and tabulate antimicrobial minimum inhibitory concentration (MIC) data.
     Validate the results of an MIC experiment by comparing observed MIC values to
     a gold standard assay, in line with standards from the International Organization for
-    Standardization (2021) <https://www.iso.org/standard/79377.html>. Perform MIC prediction from
-    whole genome sequence data stored in the Pathosystems Resource Integration Center (2013)
-    <doi:10.1093/nar/gkt1099> database or locally.
+    Standardization (2021) <https://www.iso.org/standard/79377.html>.
 License: GPL (>= 3)
 Encoding: UTF-8
 RoxygenNote: 7.3.3
-biocViews:
-Imports: AMR, glue, readr, dplyr, Rcpp, data.table, Biostrings,
-        stringr, rlang, tidyr, future.apply, progressr, lemon, ggplot2,
-        forcats, purrr, tibble, curl
+Imports: AMR, glue, dplyr, stringr, rlang, ggh4x, ggplot2, forcats,
+        purrr, tibble
 Depends: R (>= 4.1.0)
 LazyData: true
-LinkingTo: Rcpp
-Suggests: testthat (>= 3.0.0), xgboost, flextable, caret, lifecycle,
-        future
+Suggests: testthat (>= 3.0.0), flextable, lifecycle
 Config/testthat/edition: 3
 URL: https://github.com/agerada/MIC
 BugReports: https://github.com/agerada/MIC/issues
-NeedsCompilation: yes
-Packaged: 2025-10-12 13:16:44 UTC; agerada
+NeedsCompilation: no
+Packaged: 2025-12-04 20:40:55 UTC; agerada
 Author: Alessandro Gerada [aut, cre, cph] (ORCID:
     <https://orcid.org/0000-0002-6743-4271>)
 Maintainer: Alessandro Gerada <alessandro.gerada@liverpool.ac.uk>
 Repository: CRAN
-Date/Publication: 2025-10-12 16:40:14 UTC
+Date/Publication: 2025-12-04 20:50:02 UTC

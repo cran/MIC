@@ -1,6 +1,6 @@
-3ff0da8713a5c90b94df2f12c231528a *DESCRIPTION
+fd26ff37cc27117a7f147149d48213d2 *DESCRIPTION
 68ac14ca59e4ec1678bb881ebf32aaa6 *NAMESPACE
-60096f619021f6ce2eb9ccae6fbbdfba *NEWS.md
+5bc5908c151b2955899e65fd670686ce *NEWS.md
 153e010ef56ee2f5e91398ead69a3083 *R/MIC-package.R
 6e7a79abe85e5fe59fc9c4aab1a05ff5 *R/data.R
 508658b7aa5bfd0a8f07c6f54188eb90 *R/mic_manipulation.R
@@ -11,7 +11,7 @@ f8f341c986f7fdb078d461a813520d1e *R/validation.R
 54cae8c1750d088e500fcf298b220f7e *README.md
 9c83dbf4ff7209b84e0f89a77814ea68 *data/ecoffs.rda
 46552fd7d53eaecc165fa5311933029e *data/example_mics.rda
-fc993af98582b95831a6bf275c1fbc5e *man/MIC-package.Rd
+3590ea8c4c1fd0d58a9d595c5932ef9e *man/MIC-package.Rd
 8ec34d40d639526a9ed9ca478fe41358 *man/as.sir_vectorised.Rd
 bad41169f50769d8ab87c31ae7366284 *man/bias.Rd
 3910af36376f5f923292d5b23c461ad4 *man/clean_raw_mic.Rd

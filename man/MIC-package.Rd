@@ -17,7 +17,12 @@ Useful links:
 
 }
 \author{
-\strong{Maintainer}: Alessandro Gerada \email{alessandro.gerada@liverpool.ac.uk} (\href{https://orcid.org/0000-0002-6743-4271}{ORCID}) [copyright holder]
+\strong{Maintainer}: Alessandro Gerada \email{alessandro.gerada2@liverpool.ac.uk} (\href{https://orcid.org/0000-0002-6743-4271}{ORCID}) [copyright holder]
+
+Authors:
+\itemize{
+  \item Alessandro Gerada \email{alessandro.gerada2@liverpool.ac.uk} (\href{https://orcid.org/0000-0002-6743-4271}{ORCID}) [copyright holder]
+}
 
 }
 \keyword{internal}

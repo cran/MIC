@@ -1,3 +1,7 @@
+# MIC 2.0.1
+
+* Maintainer email update
+
 # MIC 2.0.0
 
 * This is a major release that includes several breaking changes. The package

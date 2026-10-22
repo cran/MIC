@@ -1,3 +1,9 @@
+# MIC 2.0.2
+
+* Compatibility with ECOFF WT and NWT values in AMR v3.1.0
+* `summary.mic_validation()` is now cautious when NA values are present (usually
+happens when breakpoints not available)
+
 # MIC 2.0.1
 
 * Maintainer email update

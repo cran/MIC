@@ -109,11 +109,37 @@ test_that("test compare_mic categorical", {
 
   ab <- c("amoxicillin", "amoxicillin", "gentamicin", "gentamicin")
   mo <- c("Escherichia coli", "Escherichia coli", "Proteus mirabilis", "Proteus mirabilis")
+  uti <- T
   suppressMessages(
     {
-      expect_s3_class(compare_mic(gs, test, ab, mo), "mic_validation")
-      expect_equal(summary(compare_mic(gs, test, ab, mo))[[1, "EA_pcent"]], 1)
-      expect_equal(summary(compare_mic(gs, test, ab, mo))[[2, "EA_pcent"]], 0)
+      expect_s3_class(compare_mic(gs, test, ab, mo, uti = uti), "mic_validation")
+      expect_equal(summary(compare_mic(gs, test, ab, mo, uti = uti))[[1, "EA_pcent"]], 1)
+      expect_equal(summary(compare_mic(gs, test, ab, mo, uti = uti))[[2, "EA_pcent"]], 0)
+    }
+  )
+})
+
+test_that("test compare_mic when multiple antibiotics and UTI varies", {
+  gs <- c("0.5", "4", ">8", "2")
+  test <- c("0.5", "8", "2", "0.5")
+  ab <- c("amoxicillin", "amoxicillin", "gentamicin", "gentamicin")
+  mo <- c("Escherichia coli", "Escherichia coli", "Proteus mirabilis", "Proteus mirabilis")
+  uti <- c(TRUE, FALSE, TRUE, FALSE)
+  suppressMessages(
+    {
+      expect_s3_class(compare_mic(gs, test, ab, mo, uti = uti), "mic_validation")
+    }
+  )
+  # uti = FALSE for aminoglycoside introduces NA, theferoe summary fails unless
+  # na.ignore = TRUE
+  suppressMessages(
+    expect_error(expect_equal(summary(compare_mic(gs, test, ab, mo, uti = uti))[[1, "EA_pcent"]], 1))
+  )
+
+  suppressMessages(
+    {
+      expect_equal(summary(compare_mic(gs, test, ab, mo, uti = uti), na.ignore = TRUE)[[1, "EA_pcent"]], 1)
+      expect_equal(summary(compare_mic(gs, test, ab, mo, uti = uti), na.ignore = TRUE)[[2, "EA_pcent"]], 0)
     }
   )
 })
@@ -175,7 +201,7 @@ test_that("test compare_sir", {
   test <- c("0.5", "8", "0.25", ">64")
   ab <- "GEN"
   mo <- "Escherichia coli"
-  val <- suppressMessages(compare_mic(gs, test, ab, mo))
+  val <- suppressMessages(compare_mic(gs, test, ab, mo, uti = TRUE))
   expect_s3_class(val, "mic_validation")
   sum_val <- summary(val)
   expect_equal(sum_val$EA_pcent[sum_val$ab == "GEN"], 0.25)

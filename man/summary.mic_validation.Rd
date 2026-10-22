@@ -4,10 +4,12 @@
 \alias{summary.mic_validation}
 \title{Summary of MIC validation results}
 \usage{
-\method{summary}{mic_validation}(object, ...)
+\method{summary}{mic_validation}(object, na.ignore = FALSE, ...)
 }
 \arguments{
 \item{object}{S3 mic_validation object}
+
+\item{na.ignore}{logical whether to ignore NA values in MICs, EA, and SIR}
 
 \item{...}{further optional parameters}
 }

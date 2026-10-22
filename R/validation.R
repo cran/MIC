@@ -437,8 +437,8 @@ compare_mic <- function(gold_standard,
   }
 
   if (!is.null(ab) & !is.null(mo)) {
-    gold_standard_sir <- as.sir_vectorised(gold_standard_mod, mo, ab, accept_ecoff, ...)
-    test_sir <- as.sir_vectorised(test_mod, mo, ab, accept_ecoff, ...)
+    gold_standard_sir <- as.sir_fallback_ecoff(gold_standard_mod, mo, ab, accept_ecoff, ...)
+    test_sir <- as.sir_fallback_ecoff(test_mod, mo, ab, accept_ecoff, ...)
     output[["gold_standard_sir"]] <- gold_standard_sir
     output[["test_sir"]] <- test_sir
     output[["error"]] <- compare_sir(gold_standard_sir,
@@ -616,6 +616,7 @@ subset.mic_validation <- function(x, subset, ...) {
 #' Summary of MIC validation results
 #'
 #' @param object S3 mic_validation object
+#' @param na.ignore logical whether to ignore NA values in MICs, EA, and SIR
 #' @param ... further optional parameters
 #'
 #' @export
@@ -633,7 +634,18 @@ subset.mic_validation <- function(x, subset, ...) {
 #' # or, for more detailed results
 #' as.data.frame(summary(val))
 summary.mic_validation <- function(object,
+                                   na.ignore = FALSE,
                                    ...) {
+  if (!na.ignore) {
+    if (any(is.na(object$gold_standard)) |
+        any(is.na(object$test)) |
+        any(is.na(object$essential_agreement)) |
+        any(is.na(object$gold_standard_sir)) |
+        any(is.na(object$test_sir)) ){
+      stop("NA values are present in gold_standard, test, or essential_agreement.
+  Remove these before summarising (or set na.ignore = TRUE).")
+    }
+  }
   if (!"ab" %in% names(object) & !"mo" %in% names(object)) {
     output <- list(EA_n = sum(object$essential_agreement == TRUE),
                    EA_pcent = sum(object$essential_agreement == TRUE) / length(object$essential_agreement),
@@ -763,6 +775,18 @@ compare_sir <- function(gold_standard, test) {
   if (!all(AMR::is.sir(gold_standard)) | !all(AMR::is.sir(test))) {
     stop("Inputs to compare_sir must be AMR::sir objects")
   }
+
+  gold_standard <- as.character(gold_standard)
+  gold_standard[gold_standard == "WT"] <- "S"
+  gold_standard[gold_standard == "NWT"] <- "R"
+
+  test <- as.character(test)
+  test[test == "WT"] <- "S"
+  test[test == "NWT"] <- "R"
+
+  gold_standard <- AMR::as.sir(gold_standard)
+  test <- AMR::as.sir(test)
+
   return(
     factor(
       dplyr::case_when(
@@ -883,7 +907,7 @@ tabulate_flex <- function(t, ea, bold, ea_color, gold_standard_name, test_name) 
 #' gold_standard <- c("<0.25", "8", "64", ">64")
 #' test <- c("<0.25", "2", "16", "64")
 #' val <- compare_mic(gold_standard, test)
-#' table(val)
+#' table(val, format = "simple", fill_dilutions = FALSE)
 table.mic_validation <- function(x,
                                  format = 'flextable',
                                  fill_dilutions = TRUE,

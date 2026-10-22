@@ -8,23 +8,6 @@
 [![R-CMD-check](https://github.com/agerada/MIC/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/agerada/MIC/actions/workflows/R-CMD-check.yaml)
 <!-- badges: end -->
 
-## Important updates
-
-As of version 2.0.0 the MIC package has being refocused to provide
-MIC-specific analysis and validation utilities. Genomics-related
-functions (PATRIC download helpers, genome -\> $k$-mer conversion,
-$k$-mer utilities, and similar) have been ported to a new package,
-[`faLearn`](https://github.com/agerada/faLearn).
-
-To continue using these functions, simply install and load the `faLearn`
-package alongside `MIC`:
-
-``` r
-# install.packages("remotes")
-remotes::install_github("agerada/faLearn")
-library(faLearn)
-```
-
 ## Introduction
 
 `MIC` is an R package for the analysis of minimum inhibitory
@@ -32,9 +15,7 @@ concentration (MIC) data. The package was designed to be compatible with
 the [`AMR`](https://amr-for-r.org/), in particular most of the functions
 in `MIC` are designed to accept and return `AMR` objects, such as `mic`
 and `sir`. The primary functions in `MIC` are designed towards
-validation studies of minimum inhibitory concentrations, however it also
-can (optionally) be used to support the construction of machine learning
-models that predict MIC values from genomic data.
+validation studies of minimum inhibitory concentrations.
 
 ## Features
 
@@ -44,14 +25,6 @@ models that predict MIC values from genomic data.
 - Plots and tables can be generated from validation experiments.
 - Quality control analysis of MIC experiments.
 - Functions to deal with censoring in MIC data.
-- Helper functions to download whole genome sequencing data and
-  susceptibility metadata from the
-  [PATRIC](https://www.bv-brc.org/docs/system_documentation/data.html)
-  database at BV-BRC.
-- Conversion of whole genome sequence data (assembled .fna files) to
-  k-mer based features for machine learning models.
-- Fast k-mer counting using C++ and `Rcpp`.
-- K-mer features stored in `XGBoost`-compatible `libsvm` format.
 
 ## Installation
 
@@ -82,6 +55,7 @@ library(MIC)
 #> 
 #>     table
 library(AMR)
+#> Warning: package 'AMR' was built under R version 4.5.2
 ```
 
 To compare two `mic` vectors (e.g., one from a gold standard and one
@@ -128,7 +102,7 @@ of minor, major, and very major errors:
 
 ``` r
 val <- compare_mic(gold_standard = example_mics$gs, test = example_mics$test,
-                   mo = example_mics$mo, ab = example_mics$ab)
+                   mo = example_mics$mo, ab = example_mics$ab, accept_ecoff = TRUE)
 val
 #> MIC validation object with 300 observations
 #> Agreement type: essential and categorical
@@ -160,19 +134,19 @@ results:
 ``` r
 head(as.data.frame(val))
 #>   gold_standard  test essential_agreement  ab           mo gold_standard_sir
-#> 1         0.002 0.002                TRUE GEN B_ESCHR_COLI                 S
-#> 2         0.004 0.002                TRUE GEN B_ESCHR_COLI                 S
-#> 3             8    16                TRUE GEN B_ESCHR_COLI                 R
-#> 4         0.008 0.016                TRUE GEN B_ESCHR_COLI                 S
-#> 5            64    64                TRUE GEN B_ESCHR_COLI                 R
-#> 6          0.06  0.06                TRUE GEN B_ESCHR_COLI                 S
+#> 1         0.002 0.002                TRUE GEN B_ESCHR_COLI                WT
+#> 2         0.004 0.002                TRUE GEN B_ESCHR_COLI                WT
+#> 3             8    16                TRUE GEN B_ESCHR_COLI               NWT
+#> 4         0.008 0.016                TRUE GEN B_ESCHR_COLI                WT
+#> 5            64    64                TRUE GEN B_ESCHR_COLI               NWT
+#> 6          0.06  0.06                TRUE GEN B_ESCHR_COLI                WT
 #>   test_sir error
-#> 1        S  <NA>
-#> 2        S  <NA>
-#> 3        R  <NA>
-#> 4        S  <NA>
-#> 5        R  <NA>
-#> 6        S  <NA>
+#> 1       WT  <NA>
+#> 2       WT  <NA>
+#> 3      NWT  <NA>
+#> 4       WT  <NA>
+#> 5      NWT  <NA>
+#> 6       WT  <NA>
 ```
 
 The results of an `mic_validation` can be plotted in a confusion matrix
@@ -182,7 +156,7 @@ The results of an `mic_validation` can be plotted in a confusion matrix
 plot(val)
 ```
 
-<img src="man/figures/README-fig-val-ea-1.png" width="100%" />
+<img src="man/figures/README-fig-val-ea-1.png" alt="" width="100%" />
 
 The plot can also be faceted by antimicrobial:
 
@@ -190,7 +164,7 @@ The plot can also be faceted by antimicrobial:
 plot(val, facet_wrap_ncol = 1)
 ```
 
-<img src="man/figures/README-unnamed-chunk-8-1.png" width="100%" />
+<img src="man/figures/README-unnamed-chunk-8-1.png" alt="" width="100%" />
 
 The `table` function can be used to generate a table of the results:
 
@@ -201,4 +175,4 @@ mem_val <- compare_mic(gold_standard = mem_dat$gs, test = mem_dat$test)
 table(mem_val)
 ```
 
-<img src="man/figures/README-unnamed-chunk-9-1.png" width="100%" />
+<img src="man/figures/README-unnamed-chunk-9-1.png" alt="" width="100%" />

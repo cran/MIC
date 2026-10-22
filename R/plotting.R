@@ -55,7 +55,7 @@ plot.single_ab_validation <- function(x,
                     .data[["test"]],
                     .data[["essential_agreement"]]) |>
     dplyr::summarise(n = dplyr::n()) |>
-    dplyr::rename(`EA` = .data[["essential_agreement"]]) |>
+    dplyr::rename(EA = tidyselect::all_of("essential_agreement")) |>
     ggplot2::ggplot(ggplot2::aes(x = .data[["gold_standard"]],
                                  y = .data[["test"]],
                                  fill = .data[["n"]],
@@ -103,7 +103,7 @@ plot.multi_ab_validation <- function(x,
     dplyr::mutate(ab = AMR::ab_name(AMR::as.ab(as.character(.data[["ab"]])))) |>
     dplyr::mutate(ab = dplyr::if_else(is.na(.data[["ab"]]), "unknown", .data[["ab"]])) |>
     dplyr::summarise(n = dplyr::n()) |>
-    dplyr::rename(`EA` = .data[["essential_agreement"]]) |>
+    dplyr::rename(EA = tidyselect::all_of("essential_agreement")) |>
     ggplot2::ggplot(ggplot2::aes(x = .data[["gold_standard"]],
                                  y = .data[["test"]],
                                  fill = .data[["n"]],
